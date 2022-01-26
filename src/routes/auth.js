@@ -3,11 +3,11 @@ const passport = require('passport');
 
 
 // signin routes
-router.get('/signin', (req, res) => {
+router.get('/signin', isNotLoggedIn, (req, res) => {
     res.render('auth/signin');
 });
 
-router.post('/signin', passport.authenticate('local.signin', {
+router.post('/signin', isNotLoggedIn, passport.authenticate('local.signin', {
     // if the authentication process is successful then redirect to the restaurants page
     successRedirect: '/restaurants',
     // if the authentication process is unsuccessful then redirect to the signin page
@@ -18,11 +18,11 @@ router.post('/signin', passport.authenticate('local.signin', {
 
 
 // signup routes
-router.get('/signup', (req, res) => {
+router.get('/signup', isNotLoggedIn, (req, res) => {
     res.render('auth/signup');
 });
 
-router.post('/signup', passport.authenticate('local.signup', {
+router.post('/signup', isNotLoggedIn, passport.authenticate('local.signup', {
     // if the authentication process is successful then redirect to the restaurants page
     successRedirect: '/restaurants',
     // if the authentication process is unsuccessful then redirect to the signin page
@@ -31,7 +31,7 @@ router.post('/signup', passport.authenticate('local.signup', {
 }));
 
 // logout route
-router.get('logout', (req, res) => {
+router.get('logout', isLoggedIn, (req, res) => {
     req.logout();
     res.redirect('/signin');
 });

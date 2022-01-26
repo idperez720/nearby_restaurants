@@ -26,4 +26,30 @@ helpers.matchPassword = async (password, savePassword) => {
     }
 };
 
+
+// verify if the user already is logged in
+helpers.isLoggedIn = (req, res, next) => {
+
+    // if the user is logged in then continue
+    if (req.isAuthenticated()) {
+        return next();
+    }
+
+    // if the user is not logged in then redirect to sign in page
+    req.flash('message', 'Log in first');
+    return res.redirect('/signin');
+};
+
+// verify if the user is not logged in
+helper.isNotLoggedIn = (req, res, next) => {
+
+    // if the user is not logged in then continue
+    if (!req.isAuthenticated()) {
+        return next();
+    }
+
+    // if the user is logged in then redirect to the restaurants page
+    return res.redirect('/restaurants');
+};
+
 module.exports = helpers;
