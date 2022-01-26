@@ -3,7 +3,7 @@ const localStrategy = require('passport-local').Strategy;
 
 const helpers = require('./helpers');
 
-const users = require('../models/users');
+const users = require('../model/users');
 
 passport.use('local.signup', new localStrategy({
     usernameField: 'username',

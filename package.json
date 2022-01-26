@@ -13,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
     "express-session-sequelize": "^2.3.0",
     "morgan": "^1.10.0",
