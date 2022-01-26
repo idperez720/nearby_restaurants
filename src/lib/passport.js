@@ -20,16 +20,22 @@ passport.use('local.signup', new localStrategy({
         password,
         fullname
     };
-
-    // encrypt password
-    newUserInfo.password = await helpers.encryptPassword(password);
-
-    // save user in database
-    try {
-        const result = await users.create(newUserInfo);
-        return done(null, result);
-    } catch (error) {
-        console.error(error);
+    // verify if the username or email is already registered
+    const userNameRegistered = await users.findOne({ where: { username: newUserInfo.username }});
+    const userEmailRegistered = await users.findOne({ where: { email: newUserInfo.email }});
+    
+    if (userNameRegistered || userEmailRegistered){
+        return done(null, false, req.flash('message', 'User or email already registered'));
+    } else {
+        // encrypt password
+        newUserInfo.password = await helpers.encryptPassword(password);
+        // save user in database
+        try {
+            const result = await users.create(newUserInfo);
+            return done(null, result);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
 

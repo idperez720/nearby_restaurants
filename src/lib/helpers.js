@@ -25,3 +25,5 @@ helpers.matchPassword = async (password, savePassword) => {
         console.error(error);
     }
 };
+
+module.exports = helpers;
