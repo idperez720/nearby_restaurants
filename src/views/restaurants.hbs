@@ -15,10 +15,33 @@
                         </div>
                     </form>
                 </div>
+                <a href="/restaurants" method="POST"> Si no aparecen los resultados dar click aqui!</a>
             </div>
         </div>
     </div>
 
+    <div class="container p-4 center-block">
+        <div class="col-md-4 mx-auto">
+            {{#if restaurants}}
+                <div class="card-header mx-auto text-center">
+                    <h2 class="card-title">Restaurantes</h2>
+                </div>
+            {{/if}}
+            </div>
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                {{#each restaurants}}
+                <div class="center-block">
+                    <div class="card-body  mx-auto">
+                        <h4 class="card-title">{{name}}</h4>
+                        <h6>{{vicinity}}</h6>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
 
 </div>
 </div>

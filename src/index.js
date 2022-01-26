@@ -73,6 +73,7 @@ app.use((req, res, next) => {
     // message variables
     app.locals.message = req.flash('message');
     app.locals.success = req.flash('success');
+    app.locals.reload = req.flash('reload');
 
     // session variables
     app.locals.user = req.user;
