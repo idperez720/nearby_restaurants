@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
+const { isLoggedIn, isNotLoggedIn } = require('../lib/helpers');
 
 
 // signin routes
@@ -31,8 +32,8 @@ router.post('/signup', isNotLoggedIn, passport.authenticate('local.signup', {
 }));
 
 // logout route
-router.get('logout', isLoggedIn, (req, res) => {
-    req.logout();
+router.get('/logout', isLoggedIn, (req, res) => {
+    req.logOut();
     res.redirect('/signin');
 });
 

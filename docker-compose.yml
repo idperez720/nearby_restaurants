@@ -5,7 +5,7 @@ services:
   node_backend: 
     container_name: prueba-tecnica-tyba
 
-    image: prueba-tecnica-tyba:0.1.2
+    image: prueba-tecnica-tyba:0.1.5
     
     build:
       context: .

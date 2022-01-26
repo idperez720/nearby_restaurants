@@ -74,6 +74,9 @@ app.use((req, res, next) => {
     app.locals.message = req.flash('message');
     app.locals.success = req.flash('success');
 
+    // session variables
+    app.locals.user = req.user;
+
     next();
 });
 
@@ -81,6 +84,7 @@ app.use((req, res, next) => {
 // routes
 app.use(require('./routes'));
 app.use(require('./routes/auth'));
+app.use(require('./routes/restaurants'));
 
 
 // start server

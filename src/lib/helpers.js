@@ -41,7 +41,7 @@ helpers.isLoggedIn = (req, res, next) => {
 };
 
 // verify if the user is not logged in
-helper.isNotLoggedIn = (req, res, next) => {
+helpers.isNotLoggedIn = (req, res, next) => {
 
     // if the user is not logged in then continue
     if (!req.isAuthenticated()) {

@@ -48,7 +48,7 @@ passport.use('local.signin', new localStrategy({
 }, async (req, username, password, done) => {
 
     // find user by username in database
-    const rows = await users.findall({where: {username: username}});
+    const rows = await users.findAll({where: {username: username}});
     
     // password validation
     if (rows.length > 0) {
